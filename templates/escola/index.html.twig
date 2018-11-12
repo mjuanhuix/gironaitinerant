@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Escoles{% endblock %}
+
+{% block body %}
+    <h1>Escoles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adreca</th>
+                <th>NIF</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for escola in escolas %}
+            <tr>
+                <td>{{ escola.id }}</td>
+                <td>{{ escola.nom }}</td>
+                <td>{{ escola.adreca }}</td>
+                <td>{{ escola.NIF }}</td>
+                <td>
+                    <a href="{{ path('escola_Mostrar', {'id': escola.id}) }}">Mostrar</a>
+                    <a href="{{ path('escola_edit', {'id': escola.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('escola_new') }}" class="btn btn-primary">Afegir escola</a>
+{% endblock %}

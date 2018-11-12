@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Guia{% endblock %}
+
+{% block body %}
+    <h1>Crear nou Guia</h1>
+
+    {{ include('guia/_form.html.twig') }}
+
+    <a href="{{ path('guia_index') }}">Tornar a la llista</a>
+{% endblock %}

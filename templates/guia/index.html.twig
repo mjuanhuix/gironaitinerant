@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guies{% endblock %}
+
+{% block body %}
+    <h1>Guies</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>NIF</th>
+                <th>Mail</th>
+                <th>Telefon</th>
+                <th>Adreca</th>
+                <th>IBAN</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guium in guias %}
+            <tr>
+                <td>{{ guium.id }}</td>
+                <td>{{ guium.nom }}</td>
+                <td>{{ guium.NIF }}</td>
+                <td>{{ guium.mail }}</td>
+                <td>{{ guium.telefon }}</td>
+                <td>{{ guium.adreca }}</td>
+                <td>{{ guium.IBAN }}</td>
+                <td>
+                    <a href="">Mostrar</a>
+                    <a href="{{ path('guia_edit', {'id': guium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('guia_new') }}" class="btn btn-primary">Afegir guia</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Despesa{% endblock %}
+
+{% block body %}
+    <h1>Edit Despesa</h1>
+
+    {{ include('despesa/_form.html.twig', {'button_label': 'Modificar'}) }}
+
+    <a href="{{ path('despesa_index') }}">Tornar a la llista</a>
+
+    {{ include('despesa/_delete_form.html.twig') }}
+{% endblock %}

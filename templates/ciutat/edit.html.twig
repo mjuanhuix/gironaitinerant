@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ciutat{% endblock %}
+
+{% block body %}
+    <h1>Edit Ciutat</h1>
+
+    {{ include('ciutat/_form.html.twig', {'button_label': 'Modificar'}) }}
+
+    <a href="{{ path('ciutat_index') }}">Tornar a la llista</a>
+
+    {{ include('ciutat/_delete_form.html.twig') }}
+{% endblock %}

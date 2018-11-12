@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Ciutat{% endblock %}
+
+{% block body %}
+    <h1>Crear nova Ciutat</h1>
+
+    {{ include('ciutat/_form.html.twig') }}
+
+    <a href="{{ path('ciutat_index') }}">Tornar a la llista</a>
+{% endblock %}

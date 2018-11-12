@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Excursions futures{% endblock %}
+
+{% block body %}
+
+    <h1>Excursions futures</h1>
+
+    {%  for excursio in excursions %}
+
+        {{ excursio.import }}
+
+    {% endfor %}
+
+
+    {% set mesos= { 1:'Gener',2:'Febrer',3:'Març',4:'Abril',5:'Maig',6:'Juny',7:'Juliol',8:'Agost',9:'Setembre',10:'Octubre',11:'Novembre',12:'Desembre'} %}
+
+
+    {% set data = "now"|date("m/d/Y") %}
+
+
+    {# la primera data serà l'ultim dilluns#}
+    {% set modify = '-1' %}
+    {% set precondition = true %}
+    {% for i in 0..7 if precondition %}
+
+        {% set data=data|date_modify("+" ~ modify ~ " day")|date("m/d/Y") %}
+
+        {% set dia_set = data|date("l") %}
+
+        {% if dia_set =="Monday" %}
+            {% set precondition = false %}
+        {% endif %}
+
+    {% endfor %}
+
+
+
+    {# veiem els propers 181 dies#}
+    {% for i in 1..182 %}
+
+
+        {% set text="" %}
+        {% set ruta=path("excursio_nova",{"data":data|date('d-m-Y')}) %}
+
+        {% set dia_set = data|date("l") %}
+
+        {# el dissabte i el diumenge no es visualitzen#}
+        {% if dia_set !="Saturday" and dia_set!="Sunday" %}
+
+            {% set class="dies" %}
+            {% if dia_set=="Monday" %} {% set class=class ~" neteja " %} {% endif %}
+            {% if data|date('d/m/Y')=="now"|date("d/m/Y") %} {% set class=class ~" dia_actual " %} {% endif %}
+            {%  for excursio in excursions %}
+                {%  if data|date('Y-m-d') == excursio.data|date('Y-m-d') %}
+
+
+                    {% set text=excursio.ruta.nom %}
+                    {% set class=class ~" exist " %}
+
+
+                    {% set ruta=path("excursio_editar",{"id":excursio.id}) %}
+                {% endif %}
+            {% endfor %}
+
+
+
+            <a href="{{ ruta }}" class="{{ class }}">
+
+                {{ data|date('d') }}
+                {% set mes=data|date('m')|number_format %}
+                {{ mesos[mes] }}
+                {{ text }}
+
+            </a>
+        {% endif %}
+
+
+
+
+        {% set modify = '1' %}
+
+        {% set data=data|date_modify("+" ~ modify ~ " day")|date("m/d/Y") %}
+
+    {% endfor %}
+
+
+{% endblock %}

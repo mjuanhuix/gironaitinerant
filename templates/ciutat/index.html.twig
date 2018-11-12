@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ciutats{% endblock %}
+
+{% block body %}
+    <h1>Ciutats</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Codi Postal</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ciutat in ciutats %}
+            <tr>
+                <td>{{ ciutat.id }}</td>
+                <td>{{ ciutat.nom }}</td>
+                <td>{{ ciutat.cp }}</td>
+                <td>
+                    <a href="{{ path('ciutat_Mostrar', {'id': ciutat.id}) }}">Mostrar</a>
+                    <a href="{{ path('ciutat_edit', {'id': ciutat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('ciutat_new') }}" class="btn btn-primary">Afegir ciutat</a>
+{% endblock %}

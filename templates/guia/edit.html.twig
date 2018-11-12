@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Guia{% endblock %}
+
+{% block body %}
+    <h1>Edit Guia</h1>
+
+    {{ include('guia/_form.html.twig', {'button_label': 'Modificar'}) }}
+
+    <a href="{{ path('guia_index') }}">Tornar a la llista</a>
+
+    {{ include('guia/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block body %}
+    <h1>Cursos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cur in curs %}
+            <tr>
+                <td>{{ cur.id }}</td>
+                <td>{{ cur.nom }}</td>
+                <td>
+                    <a href="{{ path('curs_Mostrar', {'id': cur.id}) }}">Mostrar</a>
+                    <a href="{{ path('curs_edit', {'id': cur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('curs_new') }}" class="btn btn-primary">Afegir curs</a>
+{% endblock %}

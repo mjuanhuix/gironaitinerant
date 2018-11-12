@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Professors{% endblock %}
+
+{% block body %}
+    <h1>Professors</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>Telefon</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for professor in professors %}
+            <tr>
+                <td>{{ professor.id }}</td>
+                <td>{{ professor.nom }}</td>
+                <td>{{ professor.mail }}</td>
+                <td>{{ professor.telefon }}</td>
+                <td>
+                    <a href="{{ path('professor_Mostrar', {'id': professor.id}) }}">Mostrar</a>
+                    <a href="{{ path('professor_edit', {'id': professor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('professor_new') }}" class="btn btn-primary">Afegir professor</a>
+{% endblock %}

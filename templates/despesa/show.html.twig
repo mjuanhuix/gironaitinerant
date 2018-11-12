@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Despesa{% endblock %}
+
+{% block body %}
+    <h1>Despesa</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ despesa.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ despesa.nom }}</td>
+            </tr>
+            <tr>
+                <th>Import</th>
+                <td>{{ despesa.import }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ despesa.data ? despesa.data|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Factura</th>
+                <td>{{ despesa.factura }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('despesa_index') }}">Tornar a la llista</a>
+
+    <a href="{{ path('despesa_edit', {'id': despesa.id}) }}">edit</a>
+
+    {{ include('despesa/_delete_form.html.twig') }}
+{% endblock %}

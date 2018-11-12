@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Despesa index{% endblock %}
+
+{% block body %}
+    <h1>Despesa index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Import</th>
+                <th>Data</th>
+                <th>Factura</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for despesa in despesas %}
+            <tr>
+                <td>{{ despesa.id }}</td>
+                <td>{{ despesa.nom }}</td>
+                <td>{{ despesa.import }}</td>
+                <td>{{ despesa.data ? despesa.data|date('Y-m-d') : '' }}</td>
+                <td>{{ despesa.factura }}</td>
+                <td>
+                    <a href="{{ path('despesa_Mostrar', {'id': despesa.id}) }}">Mostrar</a>
+                    <a href="{{ path('despesa_edit', {'id': despesa.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('despesa_new') }}">Crear nou</a>
+{% endblock %}

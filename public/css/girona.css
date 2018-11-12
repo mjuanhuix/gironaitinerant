@@ -1,0 +1,31 @@
+a.dies:link,a.dies:visited{
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #CCC;
+    text-align: center;
+    text-decoration: none;
+    color:#666;
+}
+a.dies:hover{
+    background-color: #CCC;
+    color:#000;
+}
+
+a.dia_actual:link,a.dia_actual:visited{
+    background-color: #C82829;
+    color: #FFF;
+}
+
+.neteja{
+    clear: both;
+}
+
+a.exist:link,a.exist:visited{
+    background-color: #0088CC;
+    color: #FFF;
+}
+a.exist:hover{
+    color: #FFF;
+    background-color: blue;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guia{% endblock %}
+
+{% block body %}
+    <h1>Guia</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ guium.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ guium.nom }}</td>
+            </tr>
+            <tr>
+                <th>NIF</th>
+                <td>{{ guium.NIF }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ guium.mail }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ guium.telefon }}</td>
+            </tr>
+            <tr>
+                <th>Adreca</th>
+                <td>{{ guium.adreca }}</td>
+            </tr>
+            <tr>
+                <th>IBAN</th>
+                <td>{{ guium.IBAN }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('guia_index') }}">Tornar a la llista</a>
+
+    <a href="{{ path('guia_edit', {'id': guium.id}) }}">edit</a>
+
+    {{ include('guia/_delete_form.html.twig') }}
+{% endblock %}

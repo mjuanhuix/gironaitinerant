@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nova excursió{% endblock %}
+
+{% block body %}
+
+
+    <h2>Afegir nova excursió</h2>
+
+
+
+    {{ form_start(form) }}
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Escola</h3>
+        </div>
+        <div class="panel-body">
+
+            {{ form_label(form.id_school) }}
+            {{ form_widget(form.id_school) }}
+
+            {{ form_label(form.id_course) }}
+            {{ form_widget(form.id_course) }}
+
+            {{ form_label(form.idProfessor) }}
+            {{ form_widget(form.idProfessor) }}
+
+            {{ form_label(form.num_alumnes) }}
+            {{ form_widget(form.num_alumnes) }}
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Excursió</h3>
+    </div>
+    <div class="panel-body">
+
+    {{ form_label(form.data) }}
+    {{ datanova|date('d/m/Y') }}
+    {{ form_widget(form.data, {'value': datanova|date('d/m/Y') }) }}
+
+    {{ form_label(form.id_route) }}
+    {{ form_widget(form.id_route) }}
+
+
+    {{ form_label(form.horari) }}
+    {{ form_widget(form.horari) }}
+
+
+
+    {{ form_label(form.companyia) }}
+    {{ form_widget(form.companyia) }}
+
+
+    </div>
+    </div>
+
+
+    {{ form_label(form.observacions) }}
+    {{ form_widget(form.observacions) }}
+
+
+    <br>
+
+    <div style="display: none">
+
+    {{ form_widget(form.import, { 'attr': {'class': 'd-none'} }) }}
+    {{ form_widget(form.factura_signada, { 'attr': {'class': 'd-none'} }) }}
+    {{ form_widget(form.dataPagament, { 'attr': {'class': 'd-none'} }) }}
+
+
+    </div>
+    {{ form_widget(form.Guardar) }}
+
+    {{ form_end(form) }}
+
+
+
+
+{% endblock %}
